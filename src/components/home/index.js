@@ -1,0 +1,7 @@
+export {default as Navbar} from './Navbar'
+export {default as Main} from './Main'
+export {default as Post} from './Post'
+export {default as Profile} from './Profile'
+export {default as Review} from './Review'
+export {default as Reviews} from './Reviews'
+export {default as Footer} from './Footer'
