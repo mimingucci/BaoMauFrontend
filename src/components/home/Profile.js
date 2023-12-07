@@ -5,7 +5,7 @@ const Profile=()=>{
    return (
     <div className="w-full">
         <div className="border-[2px] rounded-md border-solid mt-[15px] mr-5 border-gray-300 text-left p-3">
-            <h1 className="text-[20px] text-blue-800 font-bold">Bảo mẫu</h1>            
+            <h1 className="text-[20px] text-blue-800 font-bold">Nanny</h1>            
             <h1 className="text-[20px] text-blue-800 font-bold">Nguyễn Tiến Vũ</h1>
             <div className='flex items-center'>
                 <FaChartLine className='mr-[5px]'/>

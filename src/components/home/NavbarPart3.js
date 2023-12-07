@@ -18,39 +18,39 @@ const NavbarPart3 = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>1</td>
               <td>mimingucci</td>
               <td>150</td>
             </tr>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>2</td>
               <td>tourist</td>
               <td>137</td>
             </tr>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>3</td>
               <td>jiangly</td>
               <td>120</td>
             </tr>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>4</td>
               <td>Radewoosh</td>
               <td>50</td>
             </tr>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>5</td>
               <td>fantasy</td>
               <td>10</td>
             </tr>
-            <tr className="odd:bg-gray-200">
+            <tr className="odd:bg-gray-100">
               <td>6</td>
               <td>xxx</td>
               <td>9</td>
             </tr>
           </tbody>
         </table>
-        <div className="flex items-center bg-gray-200 text-blue-800 flex-row-reverse">
+        <div className="flex items-center bg-gray-100 text-blue-800 flex-row-reverse">
            <FaArrowRightLong size={15} className="mx-[5px]"/> 
            View all
         </div>
