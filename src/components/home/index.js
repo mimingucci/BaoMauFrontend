@@ -7,3 +7,6 @@ export {default as Reviews} from './Reviews'
 export {default as Footer} from './Footer'
 export {default as Rating} from './Rating'
 export {default as Calendar} from './Calendar'
+export {default as Login} from './Login'
+export {default as Posts} from './Posts'
+
