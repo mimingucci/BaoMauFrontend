@@ -7,7 +7,7 @@ const Post=({post})=>{
    return (
     <div className="text-left mt-5">
         <h1 className="text-blue-800 text-[30px] font-bold">{post?.content || 'Educational top user'}</h1>
-        <p>By <span className="underline">{post?.author || 'mimingucci'}</span>, {post?.postedtime.slice(0, 10) || '29 hours ago'}</p>
+        <p>By <span className="underline"><a href={'/profile/'+post?.author || '/profile/mimingucci'}>{post?.author || 'mimingucci'}</a></span>, {(new Date()-new Date(post?.postedtime))/ (1000 * 60 * 60) | 0} hours ago</p>
         <div className="border-l-[4px] border-solid border-gray-400 px-3">
            {post?.content || 'Lionel Messi'}
           </div>
@@ -28,7 +28,7 @@ const Post=({post})=>{
            <div className='h-full inline-flex'>
               <div className='flex h-full items-center pl-[470px] mx-[10px]'>
                  <FaUser className='mx-[5px]'/>
-                 <span className='underline'>{post?.author || 'user'}</span>
+                 <span className='underline'><a href={'/profile/'+post?.author || '/profile/mimingucci'}>{post?.author || 'mimingucci'}</a></span>
               </div>
               <div className='flex h-full items-center mx-[10px]'>
                  <BsCalendar2DateFill className='mx-[5px]'/>

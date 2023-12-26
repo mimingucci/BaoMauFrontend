@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import logo from '../assets/image/logo.jpg'
 import icons from '../utils/icons'
+import UserApi from '../getApi/UserApi'
+import { redirect } from 'react-router-dom'
 const {IoIosNotifications, IoMdSearch}=icons
 const Header=()=>{
     const [value, setValue]=useState()
+    const handleClick=()=>{
+        const keyword=value
+        setValue('')
+        window.location.replace('/search?query='+keyword)
+    }
     return(
         <div>
             <div className="upper_header flex justify-between">
@@ -36,13 +43,14 @@ const Header=()=>{
                     </div>
                 </div>
                 <div className='py-[10px] pr-[10px] flex'>
-                <IoMdSearch size={20} className='my-auto'/>
+                <IoMdSearch size={20} className='my-auto hover:cursor-pointer' onClick={handleClick}/>
                 <input 
                     // onKeyPress={handleKeyUp}
                     type={'text'} 
                     placeholder='Search' 
                     className='flex-1 bg-gray-200 outline-none'
                     onChange={(e)=>setValue(e.target.value)}
+                    value={value}
                     />
                 </div>
             </div>

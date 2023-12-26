@@ -8,5 +8,6 @@ const path={
     SIGNIN: '/signin',
     RATING: '/rating',
     CALENDAR: '/calendar',
+    SEARCH: '/search',
 }
 export default path
