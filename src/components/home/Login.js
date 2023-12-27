@@ -1,8 +1,24 @@
-import { TEInput, TERipple } from "tw-elements-react";
-import logo from '../../assets/image/logover2.png'
+import { useState } from "react";
+import UserApi from "../../getApi/UserApi";
+import HandleCookies from "../../utils/HandleCookies";
 const Login = () => {
+  const [nickname, setNickname]=useState()  
+  const [password, setPassword]=useState()  
+  const handleSubmit=async()=>{
+    try{
+      const res=await UserApi.login(nickname, password)
+      HandleCookies.setCookie('nickname', res.data['nickname'], 30)
+      HandleCookies.setCookie('password', res.data['password'], 30)
+      window.location.replace('/')
+    }catch(err){
+        alert("Login Info Not Exists")
+      }
+    }  
+  const handleChange=(ps)=>{
+    setPassword(ps)
+  }
   return (
-    <div className="mt-5 pr-[20px]">
+    <div className="mt-5">
       <div className="text-left">
         <p className="font-bold">Fill in the form to login into Topcoder.</p>
         <p>You can use Gmail as an alternative way to enter.</p>
@@ -22,7 +38,8 @@ const Login = () => {
                             Handle / Email
                         </label>
                         <input
-                            type="email"
+                            onChange={(e)=>setNickname(e.target.value)}
+                            type="text"
                             className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                     </div>
@@ -34,6 +51,7 @@ const Login = () => {
                             Password
                         </label>
                         <input
+                            onChange={(e)=>{handleChange(e.target.value)}}
                             type="password"
                             className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
@@ -45,7 +63,7 @@ const Login = () => {
                         Forget Password?
                     </a>
                     <div className="mt-6">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-400 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-600">
+                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-400 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-600" onClick={(e)=>{e.preventDefault(); handleSubmit()}}>
                             Login
                         </button>
                     </div>

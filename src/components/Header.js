@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from '../assets/image/logo.jpg'
 import icons from '../utils/icons'
 import UserApi from '../getApi/UserApi'
 import { redirect } from 'react-router-dom'
+import HandleCookies from '../utils/HandleCookies'
 const {IoIosNotifications, IoMdSearch}=icons
+let user=''
 const Header=()=>{
     const [value, setValue]=useState()
     const handleClick=()=>{
@@ -11,6 +13,24 @@ const Header=()=>{
         setValue('')
         window.location.replace('/search?query='+keyword)
     }
+    const checkLogin=()=>{
+        console.log(HandleCookies.getCookie('nickname'))
+        if(HandleCookies.getCookie('nickname')?.length>0){
+            user=HandleCookies.getCookie('nickname')
+            return true;
+        }else{
+            return false;
+        }
+    }
+    const handleLogout=()=>{
+        user=''
+        HandleCookies.setCookie('nickname', '', 0)
+        HandleCookies.setCookie('password', '', 0)
+        window.location.replace('/')
+    }
+    useEffect(()=>{
+        checkLogin()
+    }, [user])
     return(
         <div>
             <div className="upper_header flex justify-between">
@@ -20,7 +40,9 @@ const Header=()=>{
                     <IoIosNotifications size={20} className='mx-auto absolute right-0'/>
                     </div>
                     <div className='underline mt-[15px]'>
-                        <a href='http://localhost:3000/profile/mimingucci'>mimingucci</a> | Logout
+                        {checkLogin() && (<a href={'http://localhost:3000/profile/'+user}>{user}</a>)}
+                        {checkLogin() && (<span onClick={handleLogout} className='hover:cursor-pointer'>| Logout</span>)}
+                        {!checkLogin() && <a href='http://localhost:3000/login'>Login</a>}
                     </div>
                 </div>
             </div>

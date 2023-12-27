@@ -16,5 +16,11 @@ class UserApi{
     getResultBySearch(keyword){
         return axios.get(BASE_URL+'/search', {params: {query: keyword}})
     }
+    login(nickname, password){
+        return axios.post(BASE_URL+'/login', null, { 
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+            params: {'nickname': nickname, 'password': password}
+        })
+    }
 }
 export default new UserApi();

@@ -1,10 +1,20 @@
+import { useLocation } from "react-router-dom"
 import NavbarPart1 from "./NavbarPart1"
 import NavbarPart2 from "./NavbarPart2"
 import NavbarPart3 from "./NavbarPart3"
 import NavbarPart4 from "./NavbarPart4"
+import { useEffect } from "react"
 const Navbar=()=>{
+    const location=useLocation()
+    console.log(location?.pathname)
+    let inLoginPage=false
+    if(location?.pathname=='/login'){
+       inLoginPage=true
+    }else{
+        inLoginPage=false
+    }   
     return (
-        <div className="w-[25%]">
+        <div className={inLoginPage ? 'hidden' : 'w-[25%]'}>
            <NavbarPart1/>
            <NavbarPart2/>
            <NavbarPart3/>
