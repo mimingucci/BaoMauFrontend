@@ -22,5 +22,8 @@ class UserApi{
             params: {'nickname': nickname, 'password': password}
         })
     }
+    signup(email, nickname, password){
+        return axios.post(BASE_URL+'/create', {nickname, email, password})
+    }
 }
 export default new UserApi();

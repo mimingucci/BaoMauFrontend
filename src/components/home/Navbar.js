@@ -6,9 +6,8 @@ import NavbarPart4 from "./NavbarPart4"
 import { useEffect } from "react"
 const Navbar=()=>{
     const location=useLocation()
-    console.log(location?.pathname)
     let inLoginPage=false
-    if(location?.pathname=='/login'){
+    if(location?.pathname=='/login' || location?.pathname=='/signup'){
        inLoginPage=true
     }else{
         inLoginPage=false

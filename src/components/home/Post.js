@@ -3,13 +3,14 @@ import icons from '../../utils/icons'
 import PostApi from '../../getApi/PostApi'
 const {FaAnglesRight, RiAttachment2, BiSolidUpArrow, BiSolidDownArrow, FaUser, BsCalendar2DateFill, IoIosChatboxes}=icons
 const Post=({post})=>{
-
+   const headline = { __html: post?.headline};
+   const content = { __html: post?.content};
    return (
     <div className="text-left mt-5">
-        <h1 className="text-blue-800 text-[30px] font-bold">{post?.content || 'Educational top user'}</h1>
+        <h1 className="text-blue-800 text-[30px] font-bold">{ <div dangerouslySetInnerHTML={headline} /> || 'Educational top user'}</h1>
         <p>By <span className="underline"><a href={'/profile/'+post?.author || '/profile/mimingucci'}>{post?.author || 'mimingucci'}</a></span>, {(new Date()-new Date(post?.postedtime))/ (1000 * 60 * 60) | 0} hours ago</p>
         <div className="border-l-[4px] border-solid border-gray-400 px-3">
-           {post?.content || 'Lionel Messi'}
+           {<div dangerouslySetInnerHTML={content} /> || 'Lionel Messi'}
           </div>
         <div className="flex text-blue-800 items-center text-[12px]">
            Full text and comments 

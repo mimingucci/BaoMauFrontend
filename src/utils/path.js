@@ -5,9 +5,10 @@ const path={
     STAR: '*',
     API_SEARCH_ALL:'/search',
     USER: '/profile/:user',
-    SIGNIN: '/signin',
+    SIGNUP: '/signup',
     RATING: '/rating',
     CALENDAR: '/calendar',
     SEARCH: '/search',
+    WRITEPOST: '/writepost',
 }
 export default path

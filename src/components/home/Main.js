@@ -8,11 +8,13 @@ import path from '../../utils/path'
 import Login from "./Login"
 import { SearchList } from "."
 import { useLocation } from "react-router-dom"
+import Editor from "../Editor"
+import SignUp from "./SignUp"
 
 const Main=()=>{
    const location=useLocation()
    let inLoginPage=false
-   if(location?.pathname=='/login'){
+   if(location?.pathname=='/login' || location?.pathname=='/signup'){
       inLoginPage=true
    }else{
       inLoginPage=false
@@ -28,6 +30,8 @@ const Main=()=>{
             <Route path={path.USER} element={<Profile/>}/>
             <Route path={path.CALENDAR} element={<Calendar/>}/>
             <Route path={path.LOGIN} element={<Login/>}/>
+            <Route path={path.WRITEPOST} element={<Editor/>}/>  
+            <Route path={path.SIGNUP} element={<SignUp/>}/>
           </Routes>
        </div>
     )
