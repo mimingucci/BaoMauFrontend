@@ -16,6 +16,9 @@ class UserApi{
     getResultBySearch(keyword){
         return axios.get(BASE_URL+'/search', {params: {query: keyword}})
     }
+    updateUser(nickname, firstname, lastname, description, newpassword){
+        return axios.put(BASE_URL+'/update/'+nickname, {firstname, lastname, description, password: newpassword})
+    }
     login(nickname, password){
         return axios.post(BASE_URL+'/login', null, { 
             headers: { "Content-Type": "application/json; charset=UTF-8" },

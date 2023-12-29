@@ -1,13 +1,14 @@
 import icons from '../../utils/icons'
 const {FaAnglesRight, RiAttachment2, BiSolidUpArrow, BiSolidDownArrow, FaUser, BsCalendar2DateFill, IoIosChatboxes}=icons
 const Review=({review})=>{
+   const content = { __html: review?.content};
    return (
     <div className="text-left mt-3">
         <h1 className='text-yellow-400 text-[20px] font-bold'>Rating: {review?.rating || 0}</h1>
         <h1 className="text-blue-800 text-[20px] font-bold">{review?.headline || 'Headline'}</h1>
         <p>By <span className="underline">{review?.author || 'author'}</span>, {(new Date()-new Date(review?.reviewtime))/ (1000 * 60 * 60) | 0} hours ago</p>
         <div className="border-l-[4px] border-solid border-gray-400 px-3">
-           {review?.content || 'content'}
+           {<div dangerouslySetInnerHTML={content} /> || 'content'}
             </div>
         <div className='border-[2px] rounded-md border-solid h-[50px] mt-3 mr-3 border-gray-300 text-center'>
            <div className='inline-flex items-center h-full'>

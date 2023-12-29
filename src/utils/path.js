@@ -5,6 +5,7 @@ const path={
     STAR: '*',
     API_SEARCH_ALL:'/search',
     USER: '/profile/:user',
+    SETTING: '/profile/:user/setting',
     SIGNUP: '/signup',
     RATING: '/rating',
     CALENDAR: '/calendar',

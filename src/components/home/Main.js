@@ -10,6 +10,7 @@ import { SearchList } from "."
 import { useLocation } from "react-router-dom"
 import Editor from "../Editor"
 import SignUp from "./SignUp"
+import Setting from "./Setting"
 
 const Main=()=>{
    const location=useLocation()
@@ -32,6 +33,7 @@ const Main=()=>{
             <Route path={path.LOGIN} element={<Login/>}/>
             <Route path={path.WRITEPOST} element={<Editor/>}/>  
             <Route path={path.SIGNUP} element={<SignUp/>}/>
+            <Route path={path.SETTING} element={<Setting />}/>
           </Routes>
        </div>
     )
