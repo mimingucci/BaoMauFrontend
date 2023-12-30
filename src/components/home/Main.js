@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom"
 import Editor from "../Editor"
 import SignUp from "./SignUp"
 import Setting from "./Setting"
+import PostDetail from "./PostDetail"
 
 const Main=()=>{
    const location=useLocation()
@@ -34,6 +35,7 @@ const Main=()=>{
             <Route path={path.WRITEPOST} element={<Editor/>}/>  
             <Route path={path.SIGNUP} element={<SignUp/>}/>
             <Route path={path.SETTING} element={<Setting />}/>
+            <Route path={path.POST} element={<PostDetail />}/>
           </Routes>
        </div>
     )

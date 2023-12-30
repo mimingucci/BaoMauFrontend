@@ -11,5 +11,6 @@ const path={
     CALENDAR: '/calendar',
     SEARCH: '/search',
     WRITEPOST: '/writepost',
+    POST: '/post/:post',
 }
 export default path

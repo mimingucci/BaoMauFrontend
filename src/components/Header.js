@@ -14,7 +14,7 @@ const Header=()=>{
         window.location.replace('/search?query='+keyword)
     }
     const checkLogin=()=>{
-        console.log(HandleCookies.getCookie('nickname'))
+        // console.log(HandleCookies.getCookie('nickname'))
         if(HandleCookies.getCookie('nickname')?.length>0){
             user=HandleCookies.getCookie('nickname')
             return true;

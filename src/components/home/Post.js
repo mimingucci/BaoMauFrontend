@@ -1,10 +1,32 @@
 import { useEffect, useState } from 'react'
 import icons from '../../utils/icons'
 import PostApi from '../../getApi/PostApi'
+import HandleCookies from '../../utils/HandleCookies'
 const {FaAnglesRight, RiAttachment2, BiSolidUpArrow, BiSolidDownArrow, FaUser, BsCalendar2DateFill, IoIosChatboxes}=icons
 const Post=({post})=>{
+   const [like, setLike]=useState(post?.agree.length-post?.disagree.length);
    const headline = { __html: post?.headline};
    const content = { __html: post?.content};
+   const handleLike=async()=>{
+       const nickname=HandleCookies.getCookie('nickname');
+       const id=post?.id;
+       try {
+         const res=await PostApi.updateLike(id, nickname);
+         setLike(like+1);
+       } catch (error) {
+         alert(error?.response?.data);
+       } 
+   }
+   const handleDislike=async()=>{
+       const nickname=HandleCookies.getCookie('nickname');
+       const id=post?.id;
+       try {
+         const res=await PostApi.updateDislike(id, nickname);
+         setLike(like-1);
+       } catch (error) {
+         alert(error?.response?.data);
+       } 
+   }
    return (
     <div className="text-left mt-5">
         <h1 className="text-blue-800 text-[30px] font-bold">{ <div dangerouslySetInnerHTML={headline} /> || 'Educational top user'}</h1>
@@ -13,7 +35,7 @@ const Post=({post})=>{
            {<div dangerouslySetInnerHTML={content} /> || 'Lionel Messi'}
           </div>
         <div className="flex text-blue-800 items-center text-[12px]">
-           Full text and comments 
+           <a href={"/post/"+post?.id}>Full text and comments</a> 
            <FaAnglesRight size={10}/>
         </div>
         <div className="flex items-center text-[12px]">
@@ -22,9 +44,9 @@ const Post=({post})=>{
         </div>
         <div className='border-[2px] rounded-md border-solid h-[50px] mt-3 mr-5 border-gray-300 text-center'>
            <div className='inline-flex items-center h-full'>
-              <BiSolidUpArrow size={20} className='text-green-300 mx-[5px] hover:cursor-pointer'/>
-              <span className='text-[16px] text-green-700 font-bold'>{post?.agree.length-post?.disagree.length || 0}</span>
-              <BiSolidDownArrow size={20} className='text-red-300 mx-[5px] hover:cursor-pointer'/>
+              <BiSolidUpArrow size={20} className='text-green-300 mx-[5px] hover:cursor-pointer' onClick={handleLike}/>
+              <span className={like>=0 ? 'text-green-700 text-[16px] font-bold' : 'text-red-500 text-[16px] font-bold'}>{like || 0}</span>
+              <BiSolidDownArrow size={20} className='text-red-300 mx-[5px] hover:cursor-pointer' onClick={handleDislike}/>
            </div>
            <div className='h-full inline-flex'>
               <div className='flex h-full items-center pl-[470px] mx-[10px]'>
