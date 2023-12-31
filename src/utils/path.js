@@ -12,5 +12,6 @@ const path={
     SEARCH: '/search',
     WRITEPOST: '/writepost',
     POST: '/post/:post',
+    MESSAGE: '/message/:user',
 }
 export default path

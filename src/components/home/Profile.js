@@ -58,7 +58,7 @@ const Profile=()=>{
             </div>
             <div className={ishome==true ? 'hidden' : 'flex items-center'}>
                 <IoIosChatboxes className='mr-[5px]'/>
-                <span className='underline hover:cursor-pointer'>Message</span>
+                <span className='underline hover:cursor-pointer'><a href={'/message/'+user?.nickname}>Message</a></span>
             </div>
         </div>
         <Reviews reviews={user?.reviews}/>

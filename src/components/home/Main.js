@@ -12,6 +12,7 @@ import Editor from "../Editor"
 import SignUp from "./SignUp"
 import Setting from "./Setting"
 import PostDetail from "./PostDetail"
+import Message from "./Message"
 
 const Main=()=>{
    const location=useLocation()
@@ -36,6 +37,7 @@ const Main=()=>{
             <Route path={path.SIGNUP} element={<SignUp/>}/>
             <Route path={path.SETTING} element={<Setting />}/>
             <Route path={path.POST} element={<PostDetail />}/>
+            <Route path={path.MESSAGE} element={<Message />}/>
           </Routes>
        </div>
     )
